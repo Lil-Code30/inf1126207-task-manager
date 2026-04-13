@@ -12,5 +12,6 @@ namespace TaskManager.Models
         public DateTime DueDate { get; set; }
         public int UserId { get; set; }
         public int PriorityId { get; set; }
+        public Priority Priority { get; set; }  
     }
 }

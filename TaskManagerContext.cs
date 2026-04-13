@@ -21,5 +21,22 @@ namespace TaskManager
             optionsBuilder.UseSqlServer($"{connection_string};Database={database_name}");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Models.Priority>().HasData(
+                new Models.Priority()
+                {
+                    PriorityId = 1, Title = "High"
+                },
+                new Models.Priority()
+                {
+                    PriorityId = 2, Title = "Medium"
+                }, 
+                new Models.Priority()
+                {
+                    PriorityId = 3, Title = "Low"
+                });
+        }
+
     }
 }
