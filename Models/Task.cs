@@ -10,7 +10,12 @@ namespace TaskManager.Models
         public string Title { get; set; }
         public bool Status { get; set; }
         public DateTime DueDate { get; set; }
+        
+        // Task <-> User Relation many-to-many
         public int UserId { get; set; }
+        public ICollection<User> User { get; set; }
+        
+        // Task <-> Priority Relations one-to-one
         public int PriorityId { get; set; }
         public Priority Priority { get; set; }  
     }
