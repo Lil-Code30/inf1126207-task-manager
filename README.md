@@ -60,16 +60,23 @@ In `TaskManagerContext.cs`, update the connection string to match your SQL Serve
 string connection_string = "Data Source=YOUR_SERVER\\SQLEXPRESS;Initial Catalog=TaskManagerDB;Integrated Security=True;Encrypt=False";
 ```
  
-### 5. Run Migrations
+### 5. Run Migrations using VS Code
  
 ```bash
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+
+### 6.  Run Migrations using Package Manager Console (Visual Studio)
+
+```bash
+Add-Migration InitialCreate
+Update-Database
+```
  
 This will create the database and seed the default priorities (High, Medium, Low).
  
-### 6. Run the App
+### 7. Run the App
  
 ```bash
 dotnet run
