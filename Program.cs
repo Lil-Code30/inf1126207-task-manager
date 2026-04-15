@@ -35,6 +35,7 @@ while (running)
                 Console.WriteLine($"[{t.TaskId}] {t.Title} - Priority: {t.Priority.Title}");
             break;
 
+
         case "2":
             Console.Write("Task title: ");
             string title = Console.ReadLine();
@@ -44,8 +45,8 @@ while (running)
 
             taskRepo.AddTask(new TaskManager.Models.Task { Title = title, PriorityId = priorityId });
             Console.WriteLine("Task added!");
-
             break;
+
 
         case "3":
             Console.Write("Task ID to update: ");
@@ -61,11 +62,57 @@ while (running)
             }
             break;
 
+
         case "4":
             Console.Write("Task ID to delete: ");
             int deleteId = int.Parse(Console.ReadLine());
             taskRepo.DeleteTask(deleteId);
             Console.WriteLine("Task deleted!");
+            break;
+
+
+        case "5":
+            // View all users
+            var users = userRepo.GetAllUsers();
+            foreach (var u in users)
+                Console.WriteLine($"[{u.UserId}] {u.Name} — Tasks: {u.Tasks?.Count ?? 0}");
+            break;
+
+
+        case "6":
+            // Add a user
+            Console.Write("Name: ");
+            string name = Console.ReadLine();
+
+            userRepo.AddUser(new TaskManager.Models.User { Name = name});
+            break;
+
+
+        case "7":
+            // Update a user
+            Console.Write("User ID to update: ");
+            int uid = int.Parse(Console.ReadLine());
+
+            var foundUser = userRepo.GetUserById(uid);
+            if (foundUser != null)
+            {
+                Console.Write("New username: ");
+                foundUser.Name = Console.ReadLine();
+
+                userRepo.UpdateUser(foundUser);
+            }
+            else
+            {
+                Console.WriteLine("User not found.");
+            }
+            break;
+
+        case "8":
+            // Delete a user
+            Console.Write("User ID to delete: ");
+            int deleteUid = int.Parse(Console.ReadLine());
+
+            userRepo.DeleteUser(deleteUid);
             break;
 
         case "9":
