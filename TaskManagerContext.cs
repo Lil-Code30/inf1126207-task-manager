@@ -14,7 +14,7 @@ namespace TaskManager
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connection_string = "";
+            string connection_string = "Data Source=DESKTOP-LDNM8KV\\SQLEXPRESS;Initial Catalog=TaskManagerDB;Integrated Security=True;Encrypt=False";
 
             string database_name = "TaskManagerDB";
 
